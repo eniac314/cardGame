@@ -1,0 +1,890 @@
+var _user$project$Main$deck = function () {
+	var makeCard = F2(
+		function (id, _p0) {
+			var _p1 = _p0;
+			return {suit: _p1._0, value: _p1._1._0, sprite: _p1._1._1, isFlipped: true, animation: _elm_lang$core$Maybe$Nothing, id: id};
+		});
+	return A2(
+		_elm_lang$core$List$indexedMap,
+		makeCard,
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: _user$project$Types$Club,
+				_1: {
+					ctor: '_Tuple2',
+					_0: 1,
+					_1: {ctor: '_Tuple2', _0: 0, _1: 1}
+				}
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: _user$project$Types$Club,
+					_1: {
+						ctor: '_Tuple2',
+						_0: 2,
+						_1: {ctor: '_Tuple2', _0: 0, _1: 2}
+					}
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: _user$project$Types$Club,
+						_1: {
+							ctor: '_Tuple2',
+							_0: 3,
+							_1: {ctor: '_Tuple2', _0: 0, _1: 3}
+						}
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: _user$project$Types$Club,
+							_1: {
+								ctor: '_Tuple2',
+								_0: 4,
+								_1: {ctor: '_Tuple2', _0: 0, _1: 4}
+							}
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: _user$project$Types$Club,
+								_1: {
+									ctor: '_Tuple2',
+									_0: 5,
+									_1: {ctor: '_Tuple2', _0: 0, _1: 5}
+								}
+							},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: _user$project$Types$Club,
+									_1: {
+										ctor: '_Tuple2',
+										_0: 6,
+										_1: {ctor: '_Tuple2', _0: 0, _1: 6}
+									}
+								},
+								_1: {
+									ctor: '::',
+									_0: {
+										ctor: '_Tuple2',
+										_0: _user$project$Types$Club,
+										_1: {
+											ctor: '_Tuple2',
+											_0: 7,
+											_1: {ctor: '_Tuple2', _0: 0, _1: 7}
+										}
+									},
+									_1: {
+										ctor: '::',
+										_0: {
+											ctor: '_Tuple2',
+											_0: _user$project$Types$Club,
+											_1: {
+												ctor: '_Tuple2',
+												_0: 8,
+												_1: {ctor: '_Tuple2', _0: 0, _1: 8}
+											}
+										},
+										_1: {
+											ctor: '::',
+											_0: {
+												ctor: '_Tuple2',
+												_0: _user$project$Types$Club,
+												_1: {
+													ctor: '_Tuple2',
+													_0: 9,
+													_1: {ctor: '_Tuple2', _0: 0, _1: 9}
+												}
+											},
+											_1: {
+												ctor: '::',
+												_0: {
+													ctor: '_Tuple2',
+													_0: _user$project$Types$Club,
+													_1: {
+														ctor: '_Tuple2',
+														_0: 10,
+														_1: {ctor: '_Tuple2', _0: 0, _1: 10}
+													}
+												},
+												_1: {
+													ctor: '::',
+													_0: {
+														ctor: '_Tuple2',
+														_0: _user$project$Types$Club,
+														_1: {
+															ctor: '_Tuple2',
+															_0: 11,
+															_1: {ctor: '_Tuple2', _0: 0, _1: 11}
+														}
+													},
+													_1: {
+														ctor: '::',
+														_0: {
+															ctor: '_Tuple2',
+															_0: _user$project$Types$Club,
+															_1: {
+																ctor: '_Tuple2',
+																_0: 12,
+																_1: {ctor: '_Tuple2', _0: 0, _1: 12}
+															}
+														},
+														_1: {
+															ctor: '::',
+															_0: {
+																ctor: '_Tuple2',
+																_0: _user$project$Types$Club,
+																_1: {
+																	ctor: '_Tuple2',
+																	_0: 13,
+																	_1: {ctor: '_Tuple2', _0: 0, _1: 0}
+																}
+															},
+															_1: {
+																ctor: '::',
+																_0: {
+																	ctor: '_Tuple2',
+																	_0: _user$project$Types$Diamond,
+																	_1: {
+																		ctor: '_Tuple2',
+																		_0: 1,
+																		_1: {ctor: '_Tuple2', _0: 1, _1: 1}
+																	}
+																},
+																_1: {
+																	ctor: '::',
+																	_0: {
+																		ctor: '_Tuple2',
+																		_0: _user$project$Types$Diamond,
+																		_1: {
+																			ctor: '_Tuple2',
+																			_0: 2,
+																			_1: {ctor: '_Tuple2', _0: 1, _1: 2}
+																		}
+																	},
+																	_1: {
+																		ctor: '::',
+																		_0: {
+																			ctor: '_Tuple2',
+																			_0: _user$project$Types$Diamond,
+																			_1: {
+																				ctor: '_Tuple2',
+																				_0: 3,
+																				_1: {ctor: '_Tuple2', _0: 1, _1: 3}
+																			}
+																		},
+																		_1: {
+																			ctor: '::',
+																			_0: {
+																				ctor: '_Tuple2',
+																				_0: _user$project$Types$Diamond,
+																				_1: {
+																					ctor: '_Tuple2',
+																					_0: 4,
+																					_1: {ctor: '_Tuple2', _0: 1, _1: 4}
+																				}
+																			},
+																			_1: {
+																				ctor: '::',
+																				_0: {
+																					ctor: '_Tuple2',
+																					_0: _user$project$Types$Diamond,
+																					_1: {
+																						ctor: '_Tuple2',
+																						_0: 5,
+																						_1: {ctor: '_Tuple2', _0: 1, _1: 5}
+																					}
+																				},
+																				_1: {
+																					ctor: '::',
+																					_0: {
+																						ctor: '_Tuple2',
+																						_0: _user$project$Types$Diamond,
+																						_1: {
+																							ctor: '_Tuple2',
+																							_0: 6,
+																							_1: {ctor: '_Tuple2', _0: 1, _1: 6}
+																						}
+																					},
+																					_1: {
+																						ctor: '::',
+																						_0: {
+																							ctor: '_Tuple2',
+																							_0: _user$project$Types$Diamond,
+																							_1: {
+																								ctor: '_Tuple2',
+																								_0: 7,
+																								_1: {ctor: '_Tuple2', _0: 1, _1: 7}
+																							}
+																						},
+																						_1: {
+																							ctor: '::',
+																							_0: {
+																								ctor: '_Tuple2',
+																								_0: _user$project$Types$Diamond,
+																								_1: {
+																									ctor: '_Tuple2',
+																									_0: 8,
+																									_1: {ctor: '_Tuple2', _0: 1, _1: 8}
+																								}
+																							},
+																							_1: {
+																								ctor: '::',
+																								_0: {
+																									ctor: '_Tuple2',
+																									_0: _user$project$Types$Diamond,
+																									_1: {
+																										ctor: '_Tuple2',
+																										_0: 9,
+																										_1: {ctor: '_Tuple2', _0: 1, _1: 9}
+																									}
+																								},
+																								_1: {
+																									ctor: '::',
+																									_0: {
+																										ctor: '_Tuple2',
+																										_0: _user$project$Types$Diamond,
+																										_1: {
+																											ctor: '_Tuple2',
+																											_0: 10,
+																											_1: {ctor: '_Tuple2', _0: 1, _1: 10}
+																										}
+																									},
+																									_1: {
+																										ctor: '::',
+																										_0: {
+																											ctor: '_Tuple2',
+																											_0: _user$project$Types$Diamond,
+																											_1: {
+																												ctor: '_Tuple2',
+																												_0: 11,
+																												_1: {ctor: '_Tuple2', _0: 1, _1: 11}
+																											}
+																										},
+																										_1: {
+																											ctor: '::',
+																											_0: {
+																												ctor: '_Tuple2',
+																												_0: _user$project$Types$Diamond,
+																												_1: {
+																													ctor: '_Tuple2',
+																													_0: 12,
+																													_1: {ctor: '_Tuple2', _0: 1, _1: 12}
+																												}
+																											},
+																											_1: {
+																												ctor: '::',
+																												_0: {
+																													ctor: '_Tuple2',
+																													_0: _user$project$Types$Diamond,
+																													_1: {
+																														ctor: '_Tuple2',
+																														_0: 13,
+																														_1: {ctor: '_Tuple2', _0: 1, _1: 0}
+																													}
+																												},
+																												_1: {
+																													ctor: '::',
+																													_0: {
+																														ctor: '_Tuple2',
+																														_0: _user$project$Types$Heart,
+																														_1: {
+																															ctor: '_Tuple2',
+																															_0: 1,
+																															_1: {ctor: '_Tuple2', _0: 2, _1: 1}
+																														}
+																													},
+																													_1: {
+																														ctor: '::',
+																														_0: {
+																															ctor: '_Tuple2',
+																															_0: _user$project$Types$Heart,
+																															_1: {
+																																ctor: '_Tuple2',
+																																_0: 2,
+																																_1: {ctor: '_Tuple2', _0: 2, _1: 2}
+																															}
+																														},
+																														_1: {
+																															ctor: '::',
+																															_0: {
+																																ctor: '_Tuple2',
+																																_0: _user$project$Types$Heart,
+																																_1: {
+																																	ctor: '_Tuple2',
+																																	_0: 3,
+																																	_1: {ctor: '_Tuple2', _0: 2, _1: 3}
+																																}
+																															},
+																															_1: {
+																																ctor: '::',
+																																_0: {
+																																	ctor: '_Tuple2',
+																																	_0: _user$project$Types$Heart,
+																																	_1: {
+																																		ctor: '_Tuple2',
+																																		_0: 4,
+																																		_1: {ctor: '_Tuple2', _0: 2, _1: 4}
+																																	}
+																																},
+																																_1: {
+																																	ctor: '::',
+																																	_0: {
+																																		ctor: '_Tuple2',
+																																		_0: _user$project$Types$Heart,
+																																		_1: {
+																																			ctor: '_Tuple2',
+																																			_0: 5,
+																																			_1: {ctor: '_Tuple2', _0: 2, _1: 5}
+																																		}
+																																	},
+																																	_1: {
+																																		ctor: '::',
+																																		_0: {
+																																			ctor: '_Tuple2',
+																																			_0: _user$project$Types$Heart,
+																																			_1: {
+																																				ctor: '_Tuple2',
+																																				_0: 6,
+																																				_1: {ctor: '_Tuple2', _0: 2, _1: 6}
+																																			}
+																																		},
+																																		_1: {
+																																			ctor: '::',
+																																			_0: {
+																																				ctor: '_Tuple2',
+																																				_0: _user$project$Types$Heart,
+																																				_1: {
+																																					ctor: '_Tuple2',
+																																					_0: 7,
+																																					_1: {ctor: '_Tuple2', _0: 2, _1: 7}
+																																				}
+																																			},
+																																			_1: {
+																																				ctor: '::',
+																																				_0: {
+																																					ctor: '_Tuple2',
+																																					_0: _user$project$Types$Heart,
+																																					_1: {
+																																						ctor: '_Tuple2',
+																																						_0: 8,
+																																						_1: {ctor: '_Tuple2', _0: 2, _1: 8}
+																																					}
+																																				},
+																																				_1: {
+																																					ctor: '::',
+																																					_0: {
+																																						ctor: '_Tuple2',
+																																						_0: _user$project$Types$Heart,
+																																						_1: {
+																																							ctor: '_Tuple2',
+																																							_0: 9,
+																																							_1: {ctor: '_Tuple2', _0: 2, _1: 9}
+																																						}
+																																					},
+																																					_1: {
+																																						ctor: '::',
+																																						_0: {
+																																							ctor: '_Tuple2',
+																																							_0: _user$project$Types$Heart,
+																																							_1: {
+																																								ctor: '_Tuple2',
+																																								_0: 10,
+																																								_1: {ctor: '_Tuple2', _0: 2, _1: 10}
+																																							}
+																																						},
+																																						_1: {
+																																							ctor: '::',
+																																							_0: {
+																																								ctor: '_Tuple2',
+																																								_0: _user$project$Types$Heart,
+																																								_1: {
+																																									ctor: '_Tuple2',
+																																									_0: 11,
+																																									_1: {ctor: '_Tuple2', _0: 2, _1: 11}
+																																								}
+																																							},
+																																							_1: {
+																																								ctor: '::',
+																																								_0: {
+																																									ctor: '_Tuple2',
+																																									_0: _user$project$Types$Heart,
+																																									_1: {
+																																										ctor: '_Tuple2',
+																																										_0: 12,
+																																										_1: {ctor: '_Tuple2', _0: 2, _1: 12}
+																																									}
+																																								},
+																																								_1: {
+																																									ctor: '::',
+																																									_0: {
+																																										ctor: '_Tuple2',
+																																										_0: _user$project$Types$Heart,
+																																										_1: {
+																																											ctor: '_Tuple2',
+																																											_0: 13,
+																																											_1: {ctor: '_Tuple2', _0: 2, _1: 0}
+																																										}
+																																									},
+																																									_1: {
+																																										ctor: '::',
+																																										_0: {
+																																											ctor: '_Tuple2',
+																																											_0: _user$project$Types$Spade,
+																																											_1: {
+																																												ctor: '_Tuple2',
+																																												_0: 1,
+																																												_1: {ctor: '_Tuple2', _0: 3, _1: 1}
+																																											}
+																																										},
+																																										_1: {
+																																											ctor: '::',
+																																											_0: {
+																																												ctor: '_Tuple2',
+																																												_0: _user$project$Types$Spade,
+																																												_1: {
+																																													ctor: '_Tuple2',
+																																													_0: 2,
+																																													_1: {ctor: '_Tuple2', _0: 3, _1: 2}
+																																												}
+																																											},
+																																											_1: {
+																																												ctor: '::',
+																																												_0: {
+																																													ctor: '_Tuple2',
+																																													_0: _user$project$Types$Spade,
+																																													_1: {
+																																														ctor: '_Tuple2',
+																																														_0: 3,
+																																														_1: {ctor: '_Tuple2', _0: 3, _1: 3}
+																																													}
+																																												},
+																																												_1: {
+																																													ctor: '::',
+																																													_0: {
+																																														ctor: '_Tuple2',
+																																														_0: _user$project$Types$Spade,
+																																														_1: {
+																																															ctor: '_Tuple2',
+																																															_0: 4,
+																																															_1: {ctor: '_Tuple2', _0: 3, _1: 4}
+																																														}
+																																													},
+																																													_1: {
+																																														ctor: '::',
+																																														_0: {
+																																															ctor: '_Tuple2',
+																																															_0: _user$project$Types$Spade,
+																																															_1: {
+																																																ctor: '_Tuple2',
+																																																_0: 5,
+																																																_1: {ctor: '_Tuple2', _0: 3, _1: 5}
+																																															}
+																																														},
+																																														_1: {
+																																															ctor: '::',
+																																															_0: {
+																																																ctor: '_Tuple2',
+																																																_0: _user$project$Types$Spade,
+																																																_1: {
+																																																	ctor: '_Tuple2',
+																																																	_0: 6,
+																																																	_1: {ctor: '_Tuple2', _0: 3, _1: 6}
+																																																}
+																																															},
+																																															_1: {
+																																																ctor: '::',
+																																																_0: {
+																																																	ctor: '_Tuple2',
+																																																	_0: _user$project$Types$Spade,
+																																																	_1: {
+																																																		ctor: '_Tuple2',
+																																																		_0: 7,
+																																																		_1: {ctor: '_Tuple2', _0: 3, _1: 7}
+																																																	}
+																																																},
+																																																_1: {
+																																																	ctor: '::',
+																																																	_0: {
+																																																		ctor: '_Tuple2',
+																																																		_0: _user$project$Types$Spade,
+																																																		_1: {
+																																																			ctor: '_Tuple2',
+																																																			_0: 8,
+																																																			_1: {ctor: '_Tuple2', _0: 3, _1: 8}
+																																																		}
+																																																	},
+																																																	_1: {
+																																																		ctor: '::',
+																																																		_0: {
+																																																			ctor: '_Tuple2',
+																																																			_0: _user$project$Types$Spade,
+																																																			_1: {
+																																																				ctor: '_Tuple2',
+																																																				_0: 9,
+																																																				_1: {ctor: '_Tuple2', _0: 3, _1: 9}
+																																																			}
+																																																		},
+																																																		_1: {
+																																																			ctor: '::',
+																																																			_0: {
+																																																				ctor: '_Tuple2',
+																																																				_0: _user$project$Types$Spade,
+																																																				_1: {
+																																																					ctor: '_Tuple2',
+																																																					_0: 10,
+																																																					_1: {ctor: '_Tuple2', _0: 3, _1: 10}
+																																																				}
+																																																			},
+																																																			_1: {
+																																																				ctor: '::',
+																																																				_0: {
+																																																					ctor: '_Tuple2',
+																																																					_0: _user$project$Types$Spade,
+																																																					_1: {
+																																																						ctor: '_Tuple2',
+																																																						_0: 11,
+																																																						_1: {ctor: '_Tuple2', _0: 3, _1: 11}
+																																																					}
+																																																				},
+																																																				_1: {
+																																																					ctor: '::',
+																																																					_0: {
+																																																						ctor: '_Tuple2',
+																																																						_0: _user$project$Types$Spade,
+																																																						_1: {
+																																																							ctor: '_Tuple2',
+																																																							_0: 12,
+																																																							_1: {ctor: '_Tuple2', _0: 3, _1: 12}
+																																																						}
+																																																					},
+																																																					_1: {
+																																																						ctor: '::',
+																																																						_0: {
+																																																							ctor: '_Tuple2',
+																																																							_0: _user$project$Types$Spade,
+																																																							_1: {
+																																																								ctor: '_Tuple2',
+																																																								_0: 13,
+																																																								_1: {ctor: '_Tuple2', _0: 3, _1: 0}
+																																																							}
+																																																						},
+																																																						_1: {
+																																																							ctor: '::',
+																																																							_0: {
+																																																								ctor: '_Tuple2',
+																																																								_0: _user$project$Types$RedJocker,
+																																																								_1: {
+																																																									ctor: '_Tuple2',
+																																																									_0: 14,
+																																																									_1: {ctor: '_Tuple2', _0: 4, _1: 1}
+																																																								}
+																																																							},
+																																																							_1: {
+																																																								ctor: '::',
+																																																								_0: {
+																																																									ctor: '_Tuple2',
+																																																									_0: _user$project$Types$BlackJocker,
+																																																									_1: {
+																																																										ctor: '_Tuple2',
+																																																										_0: 14,
+																																																										_1: {ctor: '_Tuple2', _0: 4, _1: 0}
+																																																									}
+																																																								},
+																																																								_1: {ctor: '[]'}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+}();
+var _user$project$Main$shuffle = F2(
+	function (xs, seed) {
+		var zip = _elm_lang$core$List$map2(
+			F2(
+				function (v0, v1) {
+					return {ctor: '_Tuple2', _0: v0, _1: v1};
+				}));
+		var l = _elm_lang$core$List$length(xs);
+		var g = A2(_elm_lang$core$Random$int, 0, 10 * l);
+		var indexesGen = A2(_elm_lang$core$Random$list, l, g);
+		var indexList = _elm_lang$core$Tuple$first(
+			A2(_elm_lang$core$Random$step, indexesGen, seed));
+		var sortedList = A2(
+			_elm_lang$core$List$sortWith,
+			F2(
+				function (_p3, _p2) {
+					var _p4 = _p3;
+					var _p5 = _p2;
+					return A2(_elm_lang$core$Basics$compare, _p4._0, _p5._0);
+				}),
+			A2(zip, indexList, xs));
+		return A2(_elm_lang$core$List$map, _elm_lang$core$Tuple$second, sortedList);
+	});
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$batch(
+		{
+			ctor: '::',
+			_0: _elm_lang$window$Window$resizes(_user$project$Types$WinSize),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$animation_frame$AnimationFrame$times(_user$project$Types$Tick),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p6 = msg;
+		switch (_p6.ctor) {
+			case 'WinSize':
+				var newCardHeight = _elm_lang$core$Basics$round(
+					(0.8 * _elm_lang$core$Basics$toFloat(_p6._0.height)) / 3);
+				var newCardWidth = _elm_lang$core$Basics$round(
+					_elm_lang$core$Basics$toFloat(newCardHeight) / _user$project$View$r);
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							winSize: _p6._0,
+							cardHeight: _elm_lang$core$Basics$toFloat(newCardHeight),
+							cardWidth: _elm_lang$core$Basics$toFloat(newCardWidth)
+						}),
+					{ctor: '[]'});
+			case 'Shuffle':
+				var shuffledDeck = A2(
+					_user$project$Main$shuffle,
+					model.deck,
+					_elm_lang$core$Random$initialSeed(_p6._0));
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							deck: {ctor: '[]'},
+							playerDeck: A2(_elm_lang$core$List$take, 27, shuffledDeck),
+							opponentDeck: A2(_elm_lang$core$List$drop, 27, shuffledDeck)
+						}),
+					{ctor: '[]'});
+			case 'FlipCard':
+				var setAnim = F2(
+					function (anim, isFlipped) {
+						var _p7 = {ctor: '_Tuple2', _0: anim, _1: isFlipped};
+						if (_p7._0.ctor === 'Nothing') {
+							if (_p7._1 === true) {
+								return _elm_lang$core$Maybe$Just(
+									A2(
+										_mgold$elm_animation$Animation$ease,
+										_elm_community$easing_functions$Ease$outCubic,
+										A2(
+											_mgold$elm_animation$Animation$duration,
+											1000 * _elm_lang$core$Time$millisecond,
+											A2(
+												_mgold$elm_animation$Animation$to,
+												0,
+												A2(
+													_mgold$elm_animation$Animation$from,
+													180,
+													_mgold$elm_animation$Animation$animation(
+														function (_) {
+															return _.currentTick;
+														}(model)))))));
+							} else {
+								return _elm_lang$core$Maybe$Just(
+									A2(
+										_mgold$elm_animation$Animation$ease,
+										_elm_community$easing_functions$Ease$outCubic,
+										A2(
+											_mgold$elm_animation$Animation$duration,
+											1000 * _elm_lang$core$Time$millisecond,
+											A2(
+												_mgold$elm_animation$Animation$to,
+												180,
+												A2(
+													_mgold$elm_animation$Animation$from,
+													0,
+													_mgold$elm_animation$Animation$animation(
+														function (_) {
+															return _.currentTick;
+														}(model)))))));
+							}
+						} else {
+							if (_p7._1 === true) {
+								return _elm_lang$core$Maybe$Just(
+									A3(
+										_mgold$elm_animation$Animation$retarget,
+										function (_) {
+											return _.currentTick;
+										}(model),
+										0,
+										_p7._0._0));
+							} else {
+								return _elm_lang$core$Maybe$Just(
+									A3(
+										_mgold$elm_animation$Animation$retarget,
+										function (_) {
+											return _.currentTick;
+										}(model),
+										180,
+										_p7._0._0));
+							}
+						}
+					});
+				var flipCard = function (xs) {
+					return A3(
+						_elm_lang$core$List$foldr,
+						F2(
+							function (c, acc) {
+								return _elm_lang$core$Native_Utils.eq(
+									function (_) {
+										return _.id;
+									}(c),
+									_p6._0) ? {
+									ctor: '::',
+									_0: _elm_lang$core$Native_Utils.update(
+										c,
+										{
+											isFlipped: !function (_) {
+												return _.isFlipped;
+											}(c),
+											animation: A2(
+												setAnim,
+												function (_) {
+													return _.animation;
+												}(c),
+												function (_) {
+													return _.isFlipped;
+												}(c))
+										}),
+									_1: acc
+								} : {ctor: '::', _0: c, _1: acc};
+							}),
+						{ctor: '[]'},
+						xs);
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							playerDeck: flipCard(model.playerDeck),
+							opponentDeck: flipCard(model.opponentDeck)
+						}),
+					{ctor: '[]'});
+			case 'Tick':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{currentTick: _p6._0}),
+					{ctor: '[]'});
+			default:
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					model,
+					{ctor: '[]'});
+		}
+	});
+var _user$project$Main$shuffleCmd = A2(
+	_elm_lang$core$Task$attempt,
+	function (t) {
+		var _p8 = t;
+		if (_p8.ctor === 'Err') {
+			return _user$project$Types$Shuffle(0);
+		} else {
+			return _user$project$Types$Shuffle(
+				_elm_lang$core$Basics$round(_p8._0));
+		}
+	},
+	_elm_lang$core$Time$now);
+var _user$project$Main$getWinSize = A2(_elm_lang$core$Task$perform, _user$project$Types$WinSize, _elm_lang$window$Window$size);
+var _user$project$Main$init = A2(
+	_elm_lang$core$Platform_Cmd_ops['!'],
+	{
+		winSize: {height: 1024, width: 1920},
+		seed: _elm_lang$core$Random$initialSeed(0),
+		deck: _user$project$Main$deck,
+		playerDeck: {ctor: '[]'},
+		opponentDeck: {ctor: '[]'},
+		currentTick: 0,
+		cardWidth: 334,
+		cardHeight: 486
+	},
+	{
+		ctor: '::',
+		_0: _user$project$Main$shuffleCmd,
+		_1: {
+			ctor: '::',
+			_0: _user$project$Main$getWinSize,
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$View$view, subscriptions: _user$project$Main$subscriptions})();
+var _user$project$Main$Draw = {ctor: 'Draw'};
+var _user$project$Main$Lose = {ctor: 'Lose'};
+var _user$project$Main$Win = {ctor: 'Win'};
+var _user$project$Main$war = F2(
+	function (c1, c2) {
+		return (_elm_lang$core$Native_Utils.cmp(c1.value, c2.value) > 0) ? _user$project$Main$Win : ((_elm_lang$core$Native_Utils.cmp(c1.value, c2.value) < 0) ? _user$project$Main$Lose : _user$project$Main$Draw);
+	});

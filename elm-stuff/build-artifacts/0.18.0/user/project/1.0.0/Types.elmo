@@ -1,0 +1,27 @@
+var _user$project$Types$Card = F6(
+	function (a, b, c, d, e, f) {
+		return {suit: a, value: b, sprite: c, isFlipped: d, animation: e, id: f};
+	});
+var _user$project$Types$Model = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {winSize: a, seed: b, deck: c, playerDeck: d, opponentDeck: e, currentTick: f, cardWidth: g, cardHeight: h};
+	});
+var _user$project$Types$RedJocker = {ctor: 'RedJocker'};
+var _user$project$Types$BlackJocker = {ctor: 'BlackJocker'};
+var _user$project$Types$Spade = {ctor: 'Spade'};
+var _user$project$Types$Heart = {ctor: 'Heart'};
+var _user$project$Types$Diamond = {ctor: 'Diamond'};
+var _user$project$Types$Club = {ctor: 'Club'};
+var _user$project$Types$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Types$Shuffle = function (a) {
+	return {ctor: 'Shuffle', _0: a};
+};
+var _user$project$Types$FlipCard = function (a) {
+	return {ctor: 'FlipCard', _0: a};
+};
+var _user$project$Types$WinSize = function (a) {
+	return {ctor: 'WinSize', _0: a};
+};
+var _user$project$Types$Default = {ctor: 'Default'};

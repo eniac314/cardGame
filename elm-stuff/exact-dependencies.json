@@ -1,0 +1,11 @@
+{
+    "elm-lang/animation-frame": "1.0.1",
+    "elm-lang/virtual-dom": "2.0.4",
+    "elm-lang/dom": "1.1.1",
+    "elm-lang/html": "2.0.0",
+    "mgold/elm-animation": "1.0.5",
+    "mdgriffith/stylish-elephants": "6.0.2",
+    "elm-community/easing-functions": "1.0.2",
+    "elm-lang/window": "1.0.1",
+    "elm-lang/core": "5.1.1"
+}

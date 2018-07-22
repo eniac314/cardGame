@@ -1,0 +1,383 @@
+var _user$project$View$centralPanelView = function (model) {
+	return A2(
+		_mdgriffith$stylish_elephants$Element$row,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(
+				_mdgriffith$stylish_elephants$Element$px((model.winSize.width / 2) | 0)),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$height(_mdgriffith$stylish_elephants$Element$fill),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$centerX,
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(50),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Background$color(
+								A4(_elm_lang$core$Color$rgba, 255, 0, 0, 0.5)),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_mdgriffith$stylish_elephants$Element$el,
+				{
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$width(
+						_mdgriffith$stylish_elephants$Element$px(
+							_elm_lang$core$Basics$round(model.cardWidth))),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$height(
+							_mdgriffith$stylish_elephants$Element$px(
+								_elm_lang$core$Basics$round(model.cardHeight))),
+						_1: {ctor: '[]'}
+					}
+				},
+				_mdgriffith$stylish_elephants$Element$none),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_mdgriffith$stylish_elephants$Element$el,
+					{
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$width(
+							_mdgriffith$stylish_elephants$Element$px(
+								_elm_lang$core$Basics$round(model.cardWidth))),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element$height(
+								_mdgriffith$stylish_elephants$Element$px(
+									_elm_lang$core$Basics$round(model.cardHeight))),
+							_1: {ctor: '[]'}
+						}
+					},
+					_mdgriffith$stylish_elephants$Element$none),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$r = 486 / 334;
+var _user$project$View$cardView = F3(
+	function (currentTick, _p1, _p0) {
+		var _p2 = _p1;
+		var _p9 = _p2._0;
+		var _p8 = _p2._1;
+		var _p3 = _p0;
+		var _p7 = _p3.sprite;
+		var _p6 = _p3.animation;
+		var flipAngle = function () {
+			var _p4 = _p6;
+			if (_p4.ctor === 'Nothing') {
+				return '0';
+			} else {
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					'calc(',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Basics$toString(
+							A2(_mgold$elm_animation$Animation$animate, currentTick, _p4._0)),
+						'deg)'));
+			}
+		}();
+		var yOffset = ((_elm_lang$core$Tuple$first(_p7) * -1) * _p9) * _user$project$View$r;
+		var xOffset = (_elm_lang$core$Tuple$second(_p7) * -1) * _p9;
+		var spritePos = function () {
+			var _p5 = _p6;
+			if (_p5.ctor === 'Nothing') {
+				return _p3.isFlipped ? A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(-2 * _p9),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'px ',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString((-4 * _p9) * _user$project$View$r),
+							'px'))) : A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(xOffset),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'px ',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(yOffset),
+							'px')));
+			} else {
+				return (_elm_lang$core$Native_Utils.cmp(
+					A2(_mgold$elm_animation$Animation$animate, currentTick, _p5._0),
+					90) > 0) ? A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(-2 * _p9),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'px ',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString((-4 * _p9) * _user$project$View$r),
+							'px'))) : A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(xOffset),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'px ',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(yOffset),
+							'px')));
+			}
+		}();
+		return A2(
+			_mdgriffith$stylish_elephants$Element$el,
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$width(
+					_mdgriffith$stylish_elephants$Element$px(
+						_elm_lang$core$Basics$round(_p9))),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$height(
+						_mdgriffith$stylish_elephants$Element$px(
+							_elm_lang$core$Basics$round(_p8))),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element_Border$width(1),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Border$rounded(5),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Events$onClick(
+									_user$project$Types$FlipCard(_p3.id)),
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$stylish_elephants$Element$htmlAttribute(
+										_elm_lang$html$Html_Attributes$style(
+											{
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'background-image', _1: 'url(\"/assets/playing cards Merge.jpg\")'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'background-position', _1: spritePos},
+													_1: {
+														ctor: '::',
+														_0: {
+															ctor: '_Tuple2',
+															_0: 'background-size',
+															_1: A2(
+																_elm_lang$core$Basics_ops['++'],
+																_elm_lang$core$Basics$toString(_p9 * 13),
+																A2(
+																	_elm_lang$core$Basics_ops['++'],
+																	'px ',
+																	A2(
+																		_elm_lang$core$Basics_ops['++'],
+																		_elm_lang$core$Basics$toString(_p8 * 5),
+																		'px')))
+														},
+														_1: {
+															ctor: '::',
+															_0: {
+																ctor: '_Tuple2',
+																_0: 'transform',
+																_1: A2(
+																	_elm_lang$core$Basics_ops['++'],
+																	'rotateY(',
+																	A2(_elm_lang$core$Basics_ops['++'], flipAngle, ')'))
+															},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											})),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			},
+			_mdgriffith$stylish_elephants$Element$none);
+	});
+var _user$project$View$handView = F3(
+	function (currentTick, _p10, cards) {
+		var _p11 = _p10;
+		var _p12 = _p11._0;
+		return A2(
+			_mdgriffith$stylish_elephants$Element$row,
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$spacing(
+					_elm_lang$core$Basics$round(0 - _p12) + 2),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$width(_mdgriffith$stylish_elephants$Element$shrink),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$centerX,
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element$centerY,
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element$htmlAttribute(
+									_elm_lang$html$Html_Attributes$style(
+										{
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'perspective', _1: '600px'},
+											_1: {ctor: '[]'}
+										})),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			},
+			A2(
+				_elm_lang$core$List$map,
+				A2(
+					_user$project$View$cardView,
+					currentTick,
+					{ctor: '_Tuple2', _0: _p12, _1: _p11._1}),
+				cards));
+	});
+var _user$project$View$opponentPanelView = function (model) {
+	return A2(
+		_mdgriffith$stylish_elephants$Element$row,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(
+				_mdgriffith$stylish_elephants$Element$px((model.winSize.width / 2) | 0)),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$height(_mdgriffith$stylish_elephants$Element$fill),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$centerX,
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(50),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Background$color(
+								A4(_elm_lang$core$Color$rgba, 0, 255, 0, 0.5)),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_mdgriffith$stylish_elephants$Element$el,
+				{
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$width(
+						_mdgriffith$stylish_elephants$Element$px(
+							_elm_lang$core$Basics$round(model.cardWidth))),
+					_1: {ctor: '[]'}
+				},
+				_mdgriffith$stylish_elephants$Element$none),
+			_1: {
+				ctor: '::',
+				_0: A3(
+					_user$project$View$handView,
+					model.currentTick,
+					{ctor: '_Tuple2', _0: model.cardWidth, _1: model.cardHeight},
+					model.opponentDeck),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$playerPanelView = function (model) {
+	return A2(
+		_mdgriffith$stylish_elephants$Element$row,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element$width(
+				_mdgriffith$stylish_elephants$Element$px((model.winSize.width / 2) | 0)),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$height(_mdgriffith$stylish_elephants$Element$fill),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$centerX,
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(50),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Background$color(
+								A4(_elm_lang$core$Color$rgba, 0, 0, 255, 0.5)),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A3(
+				_user$project$View$handView,
+				model.currentTick,
+				{ctor: '_Tuple2', _0: model.cardWidth, _1: model.cardHeight},
+				model.playerDeck),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_mdgriffith$stylish_elephants$Element$el,
+					{
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$width(
+							_mdgriffith$stylish_elephants$Element$px(
+								_elm_lang$core$Basics$round(model.cardWidth))),
+						_1: {ctor: '[]'}
+					},
+					_mdgriffith$stylish_elephants$Element$none),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$view = function (model) {
+	return A2(
+		_mdgriffith$stylish_elephants$Element$layout,
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Background$tiled('/assets/bg.gif'),
+			_1: {ctor: '[]'}
+		},
+		A2(
+			_mdgriffith$stylish_elephants$Element$column,
+			{
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$width(_mdgriffith$stylish_elephants$Element$fill),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$height(_mdgriffith$stylish_elephants$Element$fill),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: _user$project$View$opponentPanelView(model),
+				_1: {
+					ctor: '::',
+					_0: _user$project$View$centralPanelView(model),
+					_1: {
+						ctor: '::',
+						_0: _user$project$View$playerPanelView(model),
+						_1: {ctor: '[]'}
+					}
+				}
+			}));
+};
