@@ -3,6 +3,7 @@ module View exposing (..)
 import Animation
     exposing
         ( animate
+        , isScheduled
         )
 import Color exposing (..)
 import Element exposing (..)
@@ -35,6 +36,8 @@ view model =
     Element.layout
         [ Background.tiled "/assets/bg.gif"
 
+        --, htmlAttribute <|
+        --    style [ ( "perspective", "600px" ) ]
         --, Background.tiled
         --, centerX
         ]
@@ -58,11 +61,12 @@ opponentPanelView model =
         [ width (px <| model.winSize.width // 2)
         , height fill
         , centerX
-        , spacing 50
-        , Background.color (Color.rgba 0 255 0 0.5)
+        , spacing 100
+
+        --, Background.color (Color.rgba 0 255 0 0.5)
         ]
         [ el [ width (px (round model.cardWidth)) ] Element.none
-        , handView model.currentTick ( model.cardWidth, model.cardHeight ) model.opponentDeck
+        , handView model.tmp model.currentTick ( model.cardWidth, model.cardHeight ) -1 model.opponentDeck
         ]
 
 
@@ -71,8 +75,9 @@ centralPanelView model =
         [ width (px <| model.winSize.width // 2)
         , height fill
         , centerX
-        , spacing 50
-        , Background.color (Color.rgba 255 0 0 0.5)
+        , spacing 100
+
+        --, Background.color (Color.rgba 255 0 0 0.5)
         ]
         [ el
             [ width (px (round model.cardWidth))
@@ -92,31 +97,40 @@ playerPanelView model =
         [ width (px <| model.winSize.width // 2)
         , height fill
         , centerX
-        , spacing 50
-        , Background.color (Color.rgba 0 0 255 0.5)
+        , spacing 100
+
+        --, Background.color (Color.rgba 0 0 255 0.5)
         ]
-        [ handView model.currentTick ( model.cardWidth, model.cardHeight ) model.playerDeck
+        [ handView model.tmp model.currentTick ( model.cardWidth, model.cardHeight ) 1 model.playerDeck
         , el [ width (px (round model.cardWidth)) ] Element.none
         ]
 
 
-handView : Time -> ( Float, Float ) -> List Card -> Element Msg
-handView currentTick ( w, h ) cards =
+handView : Int -> Time -> ( Float, Float ) -> Int -> List Card -> Element Msg
+handView tmp currentTick ( w, h ) orientation cards =
     row
-        [ spacing (round -w + 2)
+        [ spacing (round -w + (2 * orientation))
         , width shrink
         , centerX
         , centerY
-        , htmlAttribute <|
-            style [ ( "perspective", "600px" ) ]
 
+        --, htmlAttribute <|
+        --    style [ ( "perspective", "600px" ) ]
         --, Background.color Color.red
         ]
-        (List.map (cardView currentTick ( w, h )) cards)
+        (List.map
+            (cardView currentTick
+                ( w, h )
+                orientation
+                -- tmp
+                (List.length cards)
+            )
+            cards
+        )
 
 
-cardView : Time -> ( Float, Float ) -> Card -> Element Msg
-cardView currentTick ( w, h ) { sprite, isFlipped, animation, id } =
+cardView : Time -> ( Float, Float ) -> Int -> Int -> Card -> Element Msg
+cardView currentTick ( w, h ) orientation nbrCards { sprite, isFlipped, animations, id } =
     let
         xOffset =
             Tuple.second sprite * -1 * w
@@ -125,27 +139,42 @@ cardView currentTick ( w, h ) { sprite, isFlipped, animation, id } =
             Tuple.first sprite * -1 * w * r
 
         spritePos =
-            case animation of
-                Nothing ->
-                    if isFlipped then
-                        toString (-2 * w) ++ "px " ++ toString (-4 * w * r) ++ "px"
-                    else
-                        toString xOffset ++ "px " ++ toString yOffset ++ "px"
+            if isFlipped then
+                toString (-2 * w) ++ "px " ++ toString (-4 * w * r) ++ "px"
+            else
+                toString xOffset ++ "px " ++ toString yOffset ++ "px"
 
-                Just a ->
-                    if animate currentTick a > 90 then
-                        toString (-2 * w) ++ "px " ++ toString (-4 * w * r) ++ "px"
-                    else
-                        toString xOffset ++ "px " ++ toString yOffset ++ "px"
+        transform =
+            List.foldr
+                (\anim acc ->
+                    case anim.property of
+                        MoveX ->
+                            --acc
+                            acc ++ "translateX(" ++ toString (toFloat orientation * animate currentTick anim.animation) ++ "px) "
 
-        flipAngle =
-            case animation of
-                Nothing ->
-                    "0"
+                        MoveY ->
+                            --acc
+                            acc ++ "translateY(" ++ toString (toFloat orientation * animate currentTick anim.animation) ++ "px) "
 
-                Just a ->
-                    "calc(" ++ toString (animate currentTick a) ++ "deg)"
+                        Flip ->
+                            acc ++ "rotateY(" ++ toString (animate currentTick anim.animation) ++ "deg) "
+                 --++ acc
+                )
+                ""
+                animations
+
+        transformOrigin =
+            toString (orientation * (100 + round w) + round w // 2)
+                ++ "px "
+                ++ toString (orientation * -300 - round h // 2)
+                ++ "px"
     in
+    --el
+    --    [ padding 5
+    --    , Background.color Color.white
+    --    , Border.width 1
+    --    , Border.rounded 5
+    --    ]
     el
         [ width (px <| round w)
         , height (px <| round h)
@@ -159,17 +188,18 @@ cardView currentTick ( w, h ) { sprite, isFlipped, animation, id } =
         --    }
         , Border.width 1
         , Border.rounded 5
-
-        --, rotate angle
-        , Events.onClick (FlipCard id)
+        , padding 5
+        , Events.onClick (Animate id)
         , htmlAttribute <|
             style
                 [ ( "background-image", "url(\"/assets/playing cards Merge.jpg\")" )
                 , ( "background-position", spritePos )
                 , ( "background-size", toString (w * 13) ++ "px " ++ toString (h * 5) ++ "px" )
 
-                --, ( "transition", "transform 1s" )
-                , ( "transform", "rotateY(" ++ flipAngle ++ ")" )
+                --, ( "transform", "translateX(500px)" )
+                , ( "perspective", "600px" )
+                , ( "transform-origin", transformOrigin )
+                , ( "transform", transform )
                 ]
         ]
         none

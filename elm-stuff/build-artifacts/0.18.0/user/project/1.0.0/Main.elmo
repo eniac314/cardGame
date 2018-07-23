@@ -2,7 +2,14 @@ var _user$project$Main$deck = function () {
 	var makeCard = F2(
 		function (id, _p0) {
 			var _p1 = _p0;
-			return {suit: _p1._0, value: _p1._1._0, sprite: _p1._1._1, isFlipped: true, animation: _elm_lang$core$Maybe$Nothing, id: id};
+			return {
+				suit: _p1._0,
+				value: _p1._1._0,
+				sprite: _p1._1._1,
+				isFlipped: true,
+				animations: {ctor: '[]'},
+				id: id
+			};
 		});
 	return A2(
 		_elm_lang$core$List$indexedMap,
@@ -688,7 +695,11 @@ var _user$project$Main$subscriptions = function (model) {
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$animation_frame$AnimationFrame$times(_user$project$Types$Tick),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(_elm_lang$core$Time$every, 10 * _elm_lang$core$Time$millisecond, _user$project$Types$UpdateAnimations),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
@@ -723,73 +734,11 @@ var _user$project$Main$update = F2(
 						{
 							deck: {ctor: '[]'},
 							playerDeck: A2(_elm_lang$core$List$take, 27, shuffledDeck),
-							opponentDeck: A2(_elm_lang$core$List$drop, 27, shuffledDeck)
+							opponentDeck: A2(_elm_lang$core$List$drop, 27, shuffledDeck),
+							tmp: 27
 						}),
 					{ctor: '[]'});
 			case 'FlipCard':
-				var setAnim = F2(
-					function (anim, isFlipped) {
-						var _p7 = {ctor: '_Tuple2', _0: anim, _1: isFlipped};
-						if (_p7._0.ctor === 'Nothing') {
-							if (_p7._1 === true) {
-								return _elm_lang$core$Maybe$Just(
-									A2(
-										_mgold$elm_animation$Animation$ease,
-										_elm_community$easing_functions$Ease$outCubic,
-										A2(
-											_mgold$elm_animation$Animation$duration,
-											1000 * _elm_lang$core$Time$millisecond,
-											A2(
-												_mgold$elm_animation$Animation$to,
-												0,
-												A2(
-													_mgold$elm_animation$Animation$from,
-													180,
-													_mgold$elm_animation$Animation$animation(
-														function (_) {
-															return _.currentTick;
-														}(model)))))));
-							} else {
-								return _elm_lang$core$Maybe$Just(
-									A2(
-										_mgold$elm_animation$Animation$ease,
-										_elm_community$easing_functions$Ease$outCubic,
-										A2(
-											_mgold$elm_animation$Animation$duration,
-											1000 * _elm_lang$core$Time$millisecond,
-											A2(
-												_mgold$elm_animation$Animation$to,
-												180,
-												A2(
-													_mgold$elm_animation$Animation$from,
-													0,
-													_mgold$elm_animation$Animation$animation(
-														function (_) {
-															return _.currentTick;
-														}(model)))))));
-							}
-						} else {
-							if (_p7._1 === true) {
-								return _elm_lang$core$Maybe$Just(
-									A3(
-										_mgold$elm_animation$Animation$retarget,
-										function (_) {
-											return _.currentTick;
-										}(model),
-										0,
-										_p7._0._0));
-							} else {
-								return _elm_lang$core$Maybe$Just(
-									A3(
-										_mgold$elm_animation$Animation$retarget,
-										function (_) {
-											return _.currentTick;
-										}(model),
-										180,
-										_p7._0._0));
-							}
-						}
-					});
 				var flipCard = function (xs) {
 					return A3(
 						_elm_lang$core$List$foldr,
@@ -806,15 +755,7 @@ var _user$project$Main$update = F2(
 										{
 											isFlipped: !function (_) {
 												return _.isFlipped;
-											}(c),
-											animation: A2(
-												setAnim,
-												function (_) {
-													return _.animation;
-												}(c),
-												function (_) {
-													return _.isFlipped;
-												}(c))
+											}(c)
 										}),
 									_1: acc
 								} : {ctor: '::', _0: c, _1: acc};
@@ -828,7 +769,55 @@ var _user$project$Main$update = F2(
 						model,
 						{
 							playerDeck: flipCard(model.playerDeck),
-							opponentDeck: flipCard(model.opponentDeck)
+							opponentDeck: flipCard(model.opponentDeck),
+							tmp: model.tmp - 1
+						}),
+					{ctor: '[]'});
+			case 'Animate':
+				var _p7 = _p6._0;
+				var yOffset = (model.cardHeight + (_elm_lang$core$Basics$toFloat(model.winSize.height) / 3)) - model.cardHeight;
+				var xOffset = model.cardWidth + 100;
+				var anims = _elm_lang$core$List$concat(
+					{
+						ctor: '::',
+						_0: A4(_user$project$AnimationHelper$moveX, model.currentTick, 0, xOffset, _p7),
+						_1: {
+							ctor: '::',
+							_0: A4(_user$project$AnimationHelper$moveY, model.currentTick, 500 * _elm_lang$core$Time$millisecond, 0 - yOffset, _p7),
+							_1: {
+								ctor: '::',
+								_0: A3(_user$project$AnimationHelper$flipCard, model.currentTick, 1000 * _elm_lang$core$Time$millisecond, _p7),
+								_1: {ctor: '[]'}
+							}
+						}
+					});
+				var setAnims = function (xs) {
+					return A3(
+						_elm_lang$core$List$foldr,
+						F2(
+							function (c, acc) {
+								return _elm_lang$core$Native_Utils.eq(
+									function (_) {
+										return _.id;
+									}(c),
+									_p7) ? {
+									ctor: '::',
+									_0: _elm_lang$core$Native_Utils.update(
+										c,
+										{animations: anims}),
+									_1: acc
+								} : {ctor: '::', _0: c, _1: acc};
+							}),
+						{ctor: '[]'},
+						xs);
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							playerDeck: setAnims(model.playerDeck),
+							opponentDeck: setAnims(model.opponentDeck)
 						}),
 					{ctor: '[]'});
 			case 'Tick':
@@ -838,6 +827,19 @@ var _user$project$Main$update = F2(
 						model,
 						{currentTick: _p6._0}),
 					{ctor: '[]'});
+			case 'UpdateAnimations':
+				var _p8 = A2(_user$project$AnimationHelper$updateCardsAnimations, model.currentTick, model.opponentDeck);
+				var newOpponentCards = _p8._0;
+				var opponentCmds = _p8._1;
+				var _p9 = A2(_user$project$AnimationHelper$updateCardsAnimations, model.currentTick, model.playerDeck);
+				var newPlayerCards = _p9._0;
+				var playerCmds = _p9._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{playerDeck: newPlayerCards, opponentDeck: newOpponentCards}),
+					A2(_elm_lang$core$Basics_ops['++'], playerCmds, opponentCmds));
 			default:
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -845,15 +847,23 @@ var _user$project$Main$update = F2(
 					{ctor: '[]'});
 		}
 	});
+var _user$project$Main$toCmd = function (c) {
+	return A2(
+		_elm_lang$core$Task$perform,
+		function (_p10) {
+			return c;
+		},
+		_elm_lang$core$Task$succeed(''));
+};
 var _user$project$Main$shuffleCmd = A2(
 	_elm_lang$core$Task$attempt,
 	function (t) {
-		var _p8 = t;
-		if (_p8.ctor === 'Err') {
+		var _p11 = t;
+		if (_p11.ctor === 'Err') {
 			return _user$project$Types$Shuffle(0);
 		} else {
 			return _user$project$Types$Shuffle(
-				_elm_lang$core$Basics$round(_p8._0));
+				_elm_lang$core$Basics$round(_p11._0));
 		}
 	},
 	_elm_lang$core$Time$now);
@@ -868,7 +878,8 @@ var _user$project$Main$init = A2(
 		opponentDeck: {ctor: '[]'},
 		currentTick: 0,
 		cardWidth: 334,
-		cardHeight: 486
+		cardHeight: 486,
+		tmp: 0
 	},
 	{
 		ctor: '::',

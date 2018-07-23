@@ -9,11 +9,13 @@ import Animation
         , ease
         , from
         , getDuration
+        , isDone
         , retarget
         , speed
         , to
         )
 import AnimationFrame exposing (..)
+import AnimationHelper exposing (..)
 import Color exposing (..)
 import Dict exposing (..)
 import Ease exposing (..)
@@ -52,6 +54,7 @@ init =
     , currentTick = 0
     , cardWidth = 334
     , cardHeight = 486
+    , tmp = 0
     }
         ! [ shuffleCmd
           , getWinSize
@@ -77,6 +80,10 @@ shuffleCmd =
 
 
 --UPDATE
+
+
+toCmd c =
+    Task.perform (\_ -> c) (Task.succeed "")
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -106,50 +113,18 @@ update msg model =
                 | deck = []
                 , playerDeck = List.take 27 shuffledDeck
                 , opponentDeck = List.drop 27 shuffledDeck
+                , tmp = 27
             }
                 ! []
 
         FlipCard id ->
             let
-                setAnim anim isFlipped =
-                    case ( anim, isFlipped ) of
-                        ( Nothing, True ) ->
-                            Just
-                                (animation (.currentTick model)
-                                    |> from 180
-                                    |> to 0
-                                    |> duration (1000 * millisecond)
-                                    |> ease Ease.outCubic
-                                )
-
-                        ( Nothing, False ) ->
-                            Just
-                                (animation (.currentTick model)
-                                    |> from 0
-                                    |> to 180
-                                    |> duration (1000 * millisecond)
-                                    |> ease Ease.outCubic
-                                )
-
-                        ( Just a, True ) ->
-                            --Just a
-                            Just
-                                (retarget (.currentTick model) 0 a)
-
-                        ( Just a, False ) ->
-                            --Just a
-                            Just
-                                (retarget (.currentTick model) 180 a)
-
                 flipCard xs =
                     List.foldr
                         (\c acc ->
                             if .id c == id then
                                 { c
                                     | isFlipped = not (.isFlipped c)
-                                    , animation =
-                                        setAnim (.animation c)
-                                            (.isFlipped c)
                                 }
                                     :: acc
                             else
@@ -161,11 +136,67 @@ update msg model =
             { model
                 | playerDeck = flipCard model.playerDeck
                 , opponentDeck = flipCard model.opponentDeck
+                , tmp = model.tmp - 1
+            }
+                ! []
+
+        Animate id ->
+            let
+                xOffset =
+                    model.cardWidth + 100
+
+                --2 - toFloat (List.length model.playerDeck)
+                --+ 50 - (toFloat <| 2 * List.length model.playerDeck)
+                yOffset =
+                    model.cardHeight + toFloat model.winSize.height / 3 - model.cardHeight
+
+                anims =
+                    List.concat <|
+                        [ moveX model.currentTick 0 xOffset id
+                        , moveY model.currentTick (500 * millisecond) -yOffset id
+                        , flipCard model.currentTick (1000 * millisecond) id
+                        ]
+
+                --[ flipCard model.currentTick 0 id
+                --, moveX model.currentTick (500 * millisecond) 300 id
+                --, moveY model.currentTick (1000 * millisecond) -300 id
+                --]
+                setAnims xs =
+                    List.foldr
+                        (\c acc ->
+                            if .id c == id then
+                                { c
+                                    | animations = anims
+                                }
+                                    :: acc
+                            else
+                                c :: acc
+                        )
+                        []
+                        xs
+            in
+            { model
+                | playerDeck = setAnims model.playerDeck
+                , opponentDeck = setAnims model.opponentDeck
             }
                 ! []
 
         Tick t ->
             { model | currentTick = t } ! []
+
+        UpdateAnimations _ ->
+            let
+                ( newPlayerCards, playerCmds ) =
+                    updateCardsAnimations model.currentTick model.playerDeck
+
+                ( newOpponentCards, opponentCmds ) =
+                    updateCardsAnimations model.currentTick model.opponentDeck
+            in
+            { model
+                | playerDeck = newPlayerCards
+                , opponentDeck = newOpponentCards
+            }
+                ! (playerCmds ++ opponentCmds)
 
         Default ->
             model ! []
@@ -180,6 +211,7 @@ subscriptions model =
     Sub.batch
         [ Win.resizes WinSize
         , times Tick
+        , Time.every (10 * millisecond) UpdateAnimations
         ]
 
 
@@ -229,8 +261,12 @@ deck =
             { suit = suit
             , value = value
             , sprite = sprite
+
+            --, xOffset = 0
+            --, yOffset = 0
+            --, angle = 0
             , isFlipped = True
-            , animation = Nothing
+            , animations = []
             , id = id
             }
     in

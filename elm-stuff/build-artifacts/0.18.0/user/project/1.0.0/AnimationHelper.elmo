@@ -1,0 +1,232 @@
+var _user$project$AnimationHelper$toCmd = function (c) {
+	return A2(
+		_elm_lang$core$Task$perform,
+		function (_p0) {
+			return c;
+		},
+		_elm_lang$core$Task$succeed(''));
+};
+var _user$project$AnimationHelper$updateAnimations = F2(
+	function (currentTime, anims) {
+		var update = F2(
+			function (_p2, _p1) {
+				var _p3 = _p2;
+				var _p8 = _p3;
+				var _p4 = _p1;
+				var _p7 = _p4._1;
+				var _p6 = _p4._0;
+				if (A2(_mgold$elm_animation$Animation$isDone, currentTime, _p3.animation)) {
+					var _p5 = _p3.msg;
+					if (_p5.ctor === 'Nothing') {
+						return {
+							ctor: '_Tuple2',
+							_0: {ctor: '::', _0: _p8, _1: _p6},
+							_1: _p7
+						};
+					} else {
+						return {
+							ctor: '_Tuple2',
+							_0: {
+								ctor: '::',
+								_0: _elm_lang$core$Native_Utils.update(
+									_p8,
+									{msg: _elm_lang$core$Maybe$Nothing}),
+								_1: _p6
+							},
+							_1: {
+								ctor: '::',
+								_0: _user$project$AnimationHelper$toCmd(_p5._0),
+								_1: _p7
+							}
+						};
+					}
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: {ctor: '::', _0: _p8, _1: _p6},
+						_1: _p7
+					};
+				}
+			});
+		return A3(
+			_elm_lang$core$List$foldr,
+			update,
+			{
+				ctor: '_Tuple2',
+				_0: {ctor: '[]'},
+				_1: {ctor: '[]'}
+			},
+			anims);
+	});
+var _user$project$AnimationHelper$updateCardsAnimations = F2(
+	function (currentTime, cards) {
+		return A3(
+			_elm_lang$core$List$foldr,
+			F2(
+				function (c, _p9) {
+					var _p10 = _p9;
+					var _p13 = _p10._0;
+					var _p12 = _p10._1;
+					var _p11 = A2(_user$project$AnimationHelper$updateAnimations, currentTime, c.animations);
+					if (_p11._1.ctor === '[]') {
+						return {
+							ctor: '_Tuple2',
+							_0: {
+								ctor: '::',
+								_0: _elm_lang$core$Native_Utils.update(
+									c,
+									{animations: _p11._0}),
+								_1: _p13
+							},
+							_1: _p12
+						};
+					} else {
+						return {
+							ctor: '_Tuple2',
+							_0: {
+								ctor: '::',
+								_0: _elm_lang$core$Native_Utils.update(
+									c,
+									{animations: _p11._0}),
+								_1: _p13
+							},
+							_1: A2(_elm_lang$core$Basics_ops['++'], _p11._1, _p12)
+						};
+					}
+				}),
+			{
+				ctor: '_Tuple2',
+				_0: {ctor: '[]'},
+				_1: {ctor: '[]'}
+			},
+			cards);
+	});
+var _user$project$AnimationHelper$flipBack = F3(
+	function (ct, del, id) {
+		return {
+			animation: A2(
+				_mgold$elm_animation$Animation$delay,
+				del,
+				A2(
+					_mgold$elm_animation$Animation$ease,
+					_elm_community$easing_functions$Ease$outCubic,
+					A2(
+						_mgold$elm_animation$Animation$duration,
+						500 * _elm_lang$core$Time$millisecond,
+						A2(
+							_mgold$elm_animation$Animation$to,
+							180,
+							A2(
+								_mgold$elm_animation$Animation$from,
+								0,
+								_mgold$elm_animation$Animation$animation(ct)))))),
+			property: _user$project$Types$Flip,
+			msg: _elm_lang$core$Maybe$Just(
+				_user$project$Types$FlipCard(id))
+		};
+	});
+var _user$project$AnimationHelper$moveY = F4(
+	function (ct, del, offset, id) {
+		return {
+			ctor: '::',
+			_0: {
+				animation: A2(
+					_mgold$elm_animation$Animation$delay,
+					del,
+					A2(
+						_mgold$elm_animation$Animation$ease,
+						_elm_community$easing_functions$Ease$outCubic,
+						A2(
+							_mgold$elm_animation$Animation$duration,
+							500 * _elm_lang$core$Time$millisecond,
+							A2(
+								_mgold$elm_animation$Animation$to,
+								offset,
+								A2(
+									_mgold$elm_animation$Animation$from,
+									0,
+									_mgold$elm_animation$Animation$animation(ct)))))),
+				property: _user$project$Types$MoveY,
+				msg: _elm_lang$core$Maybe$Nothing
+			},
+			_1: {ctor: '[]'}
+		};
+	});
+var _user$project$AnimationHelper$moveX = F4(
+	function (ct, del, offset, id) {
+		return {
+			ctor: '::',
+			_0: {
+				animation: A2(
+					_mgold$elm_animation$Animation$delay,
+					del,
+					A2(
+						_mgold$elm_animation$Animation$ease,
+						_elm_community$easing_functions$Ease$outCubic,
+						A2(
+							_mgold$elm_animation$Animation$duration,
+							500 * _elm_lang$core$Time$millisecond,
+							A2(
+								_mgold$elm_animation$Animation$to,
+								offset,
+								A2(
+									_mgold$elm_animation$Animation$from,
+									0,
+									_mgold$elm_animation$Animation$animation(ct)))))),
+				property: _user$project$Types$MoveX,
+				msg: _elm_lang$core$Maybe$Nothing
+			},
+			_1: {ctor: '[]'}
+		};
+	});
+var _user$project$AnimationHelper$flipCard = F3(
+	function (ct, del, id) {
+		return {
+			ctor: '::',
+			_0: {
+				animation: A2(
+					_mgold$elm_animation$Animation$delay,
+					del,
+					A2(
+						_mgold$elm_animation$Animation$ease,
+						_elm_community$easing_functions$Ease$inCubic,
+						A2(
+							_mgold$elm_animation$Animation$duration,
+							250 * _elm_lang$core$Time$millisecond,
+							A2(
+								_mgold$elm_animation$Animation$to,
+								90,
+								A2(
+									_mgold$elm_animation$Animation$from,
+									0,
+									_mgold$elm_animation$Animation$animation(ct)))))),
+				property: _user$project$Types$Flip,
+				msg: _elm_lang$core$Maybe$Just(
+					_user$project$Types$FlipCard(id))
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					animation: A2(
+						_mgold$elm_animation$Animation$delay,
+						del + (250 * _elm_lang$core$Time$millisecond),
+						A2(
+							_mgold$elm_animation$Animation$ease,
+							_elm_community$easing_functions$Ease$outCubic,
+							A2(
+								_mgold$elm_animation$Animation$duration,
+								250 * _elm_lang$core$Time$millisecond,
+								A2(
+									_mgold$elm_animation$Animation$to,
+									90,
+									A2(
+										_mgold$elm_animation$Animation$from,
+										0,
+										_mgold$elm_animation$Animation$animation(ct)))))),
+					property: _user$project$Types$Flip,
+					msg: _elm_lang$core$Maybe$Nothing
+				},
+				_1: {ctor: '[]'}
+			}
+		};
+	});

@@ -13,10 +13,31 @@ type alias Card =
     { suit : Suit
     , value : Int
     , sprite : ( Float, Float )
+
+    --, xOffset : Int
+    --, yOffset : Int
+    --, angle : Int
     , isFlipped : Bool
-    , animation : Maybe Animation
-    , id : Int
+    , animations : List AnimationMeta
+    , id : CardId
     }
+
+
+type alias CardId =
+    Int
+
+
+type alias AnimationMeta =
+    { animation : Animation
+    , property : AnimProperty
+    , msg : Maybe Msg
+    }
+
+
+type AnimProperty
+    = Flip
+    | MoveX
+    | MoveY
 
 
 type Suit
@@ -37,6 +58,7 @@ type alias Model =
     , currentTick : Time
     , cardWidth : Float
     , cardHeight : Float
+    , tmp : Int
     }
 
 
@@ -44,5 +66,7 @@ type Msg
     = Default
     | WinSize Win.Size
     | FlipCard Int
+    | Animate CardId
     | Shuffle Int
     | Tick Time
+    | UpdateAnimations Time
